@@ -6,7 +6,7 @@ import edu.eci.taskplanner.model.User;
 import java.util.List;
 
 public interface TaskService {
-	List<Task> geAll();
+	List<Task> getAll();
 
 	Task getById(String id);
 
