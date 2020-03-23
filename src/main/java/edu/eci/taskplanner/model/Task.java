@@ -15,6 +15,7 @@ import java.util.Date;
 @Setter
 public class Task {
 
+	private String id;
 	private String description;
 	private User user;
 	private Status status;

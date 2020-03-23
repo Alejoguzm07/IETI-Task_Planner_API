@@ -72,6 +72,18 @@ public class TaskController {
 		}
 	}
 
+	@CrossOrigin(origins = {"https://ieti-todo-app.herokuapp.com/","http://localhost:3000"}, methods= {RequestMethod.POST})
+	@PostMapping
+	public ResponseEntity<?> create(@RequestBody Task task){
+
+		try {
+			Task createdTask = taskService.create(task);
+			return new ResponseEntity<>(createdTask, HttpStatus.ACCEPTED);
+		} catch (Exception e) {
+			return new ResponseEntity<>(e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
 	@CrossOrigin(origins = {"https://ieti-todo-app.herokuapp.com/","http://localhost:3000"}, methods= {RequestMethod.PUT})
 	@PutMapping
 	public ResponseEntity<?> update(@RequestBody Task task){
