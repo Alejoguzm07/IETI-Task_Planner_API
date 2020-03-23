@@ -16,7 +16,20 @@ public class UserServiceImpl implements UserService {
 
 	@Override public User getById(String userId) {
 
-		return null;
+		return User.builder()
+				   .email("admin")
+				   .fullname("administrador")
+				   .password("admin")
+				   .build();
+	}
+
+	@Override public User getByEmail(String email) {
+
+		return User.builder()
+						.email("admin")
+						.fullname("administrador")
+						.password("admin")
+						.build();
 	}
 
 	@Override public User create(User user) {

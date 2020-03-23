@@ -6,6 +6,7 @@ import edu.eci.taskplanner.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,11 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/tasks")
+@RequestMapping("/api/tasks")
 public class TaskController {
 
 	@Autowired TaskService taskService;
 
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GetMapping
 	public ResponseEntity<?> getAll(){
 
@@ -34,6 +36,7 @@ public class TaskController {
 		}
 	}
 
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GetMapping("/id/{task}")
 	public ResponseEntity<?> getById(@PathVariable("task") String id){
 		try {
@@ -44,6 +47,7 @@ public class TaskController {
 		}
 	}
 
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@GetMapping("/id/{user}")
 	public ResponseEntity<?> getByUserId(@PathVariable("user") String userId){
 
@@ -55,6 +59,7 @@ public class TaskController {
 		}
 	}
 
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@PostMapping("/id/{task}")
 	public ResponseEntity<?> assignTaskToUser(@PathVariable("task") String taskId,@RequestBody User user){
 
@@ -66,6 +71,7 @@ public class TaskController {
 		}
 	}
 
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@PutMapping
 	public ResponseEntity<?> update(@RequestBody Task task){
 
@@ -77,6 +83,7 @@ public class TaskController {
 		}
 	}
 
+	@CrossOrigin(origins = "*", allowedHeaders = "*")
 	@DeleteMapping("/id/{task}")
 	public ResponseEntity<?> remove(@PathVariable("task") String id){
 
