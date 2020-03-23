@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class TaskController {
 
 	@Autowired TaskService taskService;
 
-	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@CrossOrigin(origins = {"https://ieti-todo-app.herokuapp.com/","http://localhost:3000"}, methods= {RequestMethod.GET})
 	@GetMapping
 	public ResponseEntity<?> getAll(){
 
@@ -36,7 +37,7 @@ public class TaskController {
 		}
 	}
 
-	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@CrossOrigin(origins = {"https://ieti-todo-app.herokuapp.com/","http://localhost:3000"}, methods= {RequestMethod.GET})
 	@GetMapping("/id/{task}")
 	public ResponseEntity<?> getById(@PathVariable("task") String id){
 		try {
@@ -47,7 +48,7 @@ public class TaskController {
 		}
 	}
 
-	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@CrossOrigin(origins = {"https://ieti-todo-app.herokuapp.com/","http://localhost:3000"}, methods= {RequestMethod.GET})
 	@GetMapping("/id/{user}")
 	public ResponseEntity<?> getByUserId(@PathVariable("user") String userId){
 
@@ -59,7 +60,7 @@ public class TaskController {
 		}
 	}
 
-	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@CrossOrigin(origins = {"https://ieti-todo-app.herokuapp.com/","http://localhost:3000"}, methods= {RequestMethod.POST})
 	@PostMapping("/id/{task}")
 	public ResponseEntity<?> assignTaskToUser(@PathVariable("task") String taskId,@RequestBody User user){
 
@@ -71,7 +72,7 @@ public class TaskController {
 		}
 	}
 
-	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@CrossOrigin(origins = {"https://ieti-todo-app.herokuapp.com/","http://localhost:3000"}, methods= {RequestMethod.PUT})
 	@PutMapping
 	public ResponseEntity<?> update(@RequestBody Task task){
 
@@ -83,7 +84,7 @@ public class TaskController {
 		}
 	}
 
-	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@CrossOrigin(origins = {"https://ieti-todo-app.herokuapp.com/","http://localhost:3000"}, methods= {RequestMethod.DELETE})
 	@DeleteMapping("/id/{task}")
 	public ResponseEntity<?> remove(@PathVariable("task") String id){
 

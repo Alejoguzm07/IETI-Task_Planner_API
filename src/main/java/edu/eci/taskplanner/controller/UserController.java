@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class UserController {
 
 	@Autowired UserService userService;
 
-	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@CrossOrigin(origins = {"https://ieti-todo-app.herokuapp.com/","http://localhost:3000"}, methods= {RequestMethod.GET})
 	@GetMapping
 	public ResponseEntity<?> getAll(){
 
@@ -35,7 +36,7 @@ public class UserController {
 		}
 	}
 
-	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@CrossOrigin(origins = {"https://ieti-todo-app.herokuapp.com/","http://localhost:3000"}, methods= {RequestMethod.GET})
 	@GetMapping("/id/{user}")
 	public ResponseEntity<?> getById(@PathVariable("user") String userId){
 
@@ -47,7 +48,7 @@ public class UserController {
 		}
 	}
 
-	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@CrossOrigin(origins = {"https://ieti-todo-app.herokuapp.com/","http://localhost:3000"}, methods= {RequestMethod.GET})
 	@GetMapping("/email/{user}")
 	public ResponseEntity<?> getByEmail(@PathVariable("user") String email){
 
@@ -59,7 +60,7 @@ public class UserController {
 		}
 	}
 
-	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@CrossOrigin(origins = {"https://ieti-todo-app.herokuapp.com/","http://localhost:3000"}, methods= {RequestMethod.POST})
 	@PostMapping
 	public ResponseEntity<?> create(@RequestBody User user){
 
@@ -71,7 +72,7 @@ public class UserController {
 		}
 	}
 
-	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@CrossOrigin(origins = {"https://ieti-todo-app.herokuapp.com/","http://localhost:3000"}, methods= {RequestMethod.PUT})
 	@PutMapping
 	public ResponseEntity<?> update(@RequestBody User user){
 
@@ -83,7 +84,7 @@ public class UserController {
 		}
 	}
 
-	@CrossOrigin(origins = "*", allowedHeaders = "*")
+	@CrossOrigin(origins = {"https://ieti-todo-app.herokuapp.com/","http://localhost:3000"}, methods= {RequestMethod.DELETE})
 	@DeleteMapping("/id/{user}")
 	public ResponseEntity<?> remove(@PathVariable("user") String userId){
 

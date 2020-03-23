@@ -5,9 +5,11 @@ import edu.eci.taskplanner.service.UserService;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.ServletException;
@@ -19,14 +21,15 @@ public class Login {
 
 	@Autowired UserService userService;
 
+	@CrossOrigin(origins = {"https://ieti-todo-app.herokuapp.com/","http://localhost:3000"},
+			methods= {RequestMethod.POST, RequestMethod.GET})
 	@PostMapping()
 	public Token login( @RequestBody User login)
 			throws ServletException
 	{
 
 		String jwtToken = "";
-
-		if ( login.getFullname() == null || login.getPassword() == null )
+		if ( login.getEmail() == null || login.getPassword() == null )
 		{
 			throw new ServletException( "Please fill in username and password" );
 		}
